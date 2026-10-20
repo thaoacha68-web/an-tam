@@ -48,13 +48,13 @@ REST API nằm dưới `/api`; `GET /api/health` là health check. Bearer token 
 Chạy từ thư mục gốc của dự án:
 
 ```powershell
-docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml up -d --build
+docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml -f compose.monitoring.yml up -d --build
 ```
 
 ### Kiểm tra trạng thái
 
 ```powershell
-docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml ps -a
+docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml -f compose.monitoring.yml ps -a
 ```
 
 ### Địa chỉ truy cập
@@ -65,11 +65,11 @@ docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml 
 | pgAdmin | http://localhost:5050 |
 | Grafana | http://localhost:3000 |
 | Prometheus | http://localhost:9090 |
-
+| cAdvisor | http://localhost:8081/containers/ |
 ### Dừng hệ thống
 
 ```powershell
-docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml stop
+docker compose -f docker-compose.yml -f compose.windows.yml -f compose.logs.yml -f compose.hardening.yml -f compose.monitoring.yml stop
 ```
 
 Dữ liệu được giữ trong Docker volumes khi dùng lệnh stop.
