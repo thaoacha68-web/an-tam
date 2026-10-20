@@ -1,0 +1,19 @@
+{
+  "id": null,
+  "uid": "antam-overview",
+  "title": "An Tâm · Tổng quan vận hành",
+  "tags": ["antam", "clinic"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    { "id": 1, "type": "timeseries", "title": "API requests / lỗi", "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }, "datasource": { "type": "prometheus", "uid": "prometheus" }, "targets": [{ "expr": "antam_http_requests_total", "legendFormat": "requests", "refId": "A" }, { "expr": "antam_http_errors_total", "legendFormat": "errors", "refId": "B" }] },
+    { "id": 2, "type": "timeseries", "title": "Độ trễ API trung bình (ms)", "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }, "datasource": { "type": "prometheus", "uid": "prometheus" }, "targets": [{ "expr": "antam_http_latency_avg_ms", "legendFormat": "latency", "refId": "A" }] },
+    { "id": 3, "type": "timeseries", "title": "CPU máy chủ (%)", "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }, "datasource": { "type": "prometheus", "uid": "prometheus" }, "targets": [{ "expr": "100 * (1 - avg by(instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])))", "legendFormat": "{{instance}}", "refId": "A" }] },
+    { "id": 4, "type": "timeseries", "title": "RAM máy chủ (%)", "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 }, "datasource": { "type": "prometheus", "uid": "prometheus" }, "targets": [{ "expr": "100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)", "legendFormat": "{{instance}}", "refId": "A" }] },
+    { "id": 5, "type": "timeseries", "title": "Kết nối PostgreSQL", "gridPos": { "x": 0, "y": 16, "w": 12, "h": 8 }, "datasource": { "type": "prometheus", "uid": "prometheus" }, "targets": [{ "expr": "pg_stat_activity_count", "legendFormat": "active connections", "refId": "A" }] },
+    { "id": 6, "type": "logs", "title": "Log Loki", "gridPos": { "x": 12, "y": 16, "w": 12, "h": 8 }, "datasource": { "type": "loki", "uid": "loki" }, "targets": [{ "expr": "{job=\"antam-api\"}", "refId": "A" }] }
+  ]
+}

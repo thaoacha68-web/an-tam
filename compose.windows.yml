@@ -1,0 +1,4 @@
+﻿services:
+  node-exporter:
+    command: ["--path.rootfs=/"]
+    volumes: !reset []
