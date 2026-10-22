@@ -2,7 +2,7 @@
 
 Bài tập lớn môn Triển khai và Quản trị Hệ thống Phần mềm.
 
-- Sinh viên: Thào A Chà
+- Sinh viên: Thào A Chả
 - MSSV: DTC245200711
 - Repository: https://github.com/thaoacha68-web/an-tam
 
@@ -98,7 +98,8 @@ Lưu ý: thay `POSTGRES_PASSWORD` trong `.env` không tự đổi mật khẩu r
 ## 6. Khởi động toàn bộ hệ thống
 
 Mở Docker Desktop và đợi Docker Engine hoạt động.
-
+cd G:\baithiketthuchocphan
+docker info
 Chạy từ thư mục gốc của dự án:
 
 ```powershell
